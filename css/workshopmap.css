@@ -1,0 +1,23 @@
+#workshop-stats {
+  position: absolute;
+  right: 0;
+  top: 200px;
+  width: 15%;
+  padding: 25px;
+  text-align: right;
+  background: rgba(255,255,255, .1);
+  z-index: 0;
+}
+
+.stat-title {
+  text-transform: uppercase;
+  color: grey;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.stat {
+  color: #66c6ba;
+  font-size: 3em;
+  margin: 0 0 5px 0;
+}

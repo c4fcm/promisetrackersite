@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promise Tracker Workshops</title>
+    <link rel="stylesheet" type="text/css" href="css/workshopmap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+  </head>
+  <body>
+    <div id="workshop-stats">
+      <p class="stat-title">Number of workshops</p>
+      <h2 class="stat" id="workshop-count"></h2>
+      <p class="stat-title">Workshop participants</p>
+      <h2 class="stat" id="participant-count"></h2>
+      <p class="stat-title">Number of campaigns</p>
+      <h2 class="stat" id="campaign-count"></h2>
+    </div>
+    <iframe width='100%' height='700' frameborder='0' src='https://emreiser.cartodb.com/viz/c9c21a0e-e4fd-11e4-b267-0e018d66dc29/embed_map' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+    <!-- 89ed89917c907859daabaf41a13ce80cb93df6be -->
+    <script type="text/javascript">
+      $.getJSON('https://emreiser.cartodb.com/api/v2/sql/?q=select%20sum(number_of_participants)%20from%20monitorando_workshops', function(data) {
+        $("#participant-count").html(data.rows[0].sum)
+      });
+
+      $.getJSON('https://emreiser.cartodb.com/api/v2/sql/?q=select%20count(city)%20from%20monitorando_workshops', function(data) {
+        $("#workshop-count").html(data.rows[0].count)
+      });
+
+      $.getJSON('https://emreiser.cartodb.com/api/v2/sql/?q=select%20sum(number_of_campaigns)%20from%20monitorando_workshops', function(data) {
+        $("#campaign-count").html(data.rows[0].sum)
+      });
+    </script>
+  </body>
+</html>
